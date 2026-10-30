@@ -1,0 +1,335 @@
+h1 {
+    color:  #ff0000;
+    font-size: 40px;
+}
+/* 基本：パソコン */
+h1 {
+    font-size: 32px;
+}
+
+/* スマートフォン */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 24px;
+    }
+.l-header__info__tel {
+  margin: 0;
+}
+
+.l-header__info__tel a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: #e75b22;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.l-header__info__tel a::before {
+  content: "☎";
+  margin-right: 8px;
+}
+
+.l-header__info__tel a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  box-sizing: border-box;
+  padding: 0;
+  background: #e75b22;
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  text-decoration: none;
+  border-radius: 0;
+}}
+
+.l-header__info__tel a::before {
+  content: "☎";
+  margin-right: 8px;
+}
+
+.l-header__info__tel a:hover {
+  background: #ff0000;
+}
+.l-header {
+  position: relative;
+}
+
+.l-header__info__tel {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin: 0;
+}
+
+.l-header__info__tel a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: #e75b22;
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+  text-decoration: none;
+  border-radius: 0;
+}
+
+.l-header__info__tel a:hover {
+  background: #ff0000;
+}
+.flow-connector {
+  position: relative;
+  height: 120px;
+}
+
+/* 横線 */
+.flow-connector::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 6px;
+  background: #167bb7;
+  content: "";
+}
+
+/* 下向き矢印 */
+.flow-connector__arrow {
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  border-right: 6px solid #167bb7;
+  border-bottom: 6px solid #167bb7;
+  transform: translateX(-50%) rotate(45deg);
+}
+@charset "utf-8";
+
+/* ==========================================
+   共通コンテナ・基礎設定
+   ========================================== */
+.c-wrap {
+    width: 100%;
+    background-color: #f7f7f7; /* お好みの背景色に変更してください */
+    color: #333;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.c-inr {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px 40px;
+}
+
+/* 画面幅による表示切り替え */
+@media screen and (max-width: 768px) {
+    .u-pc {
+        display: none !important;
+    }
+}
+@media screen and (min-width: 769px) {
+    .u-sp {
+        display: none !important;
+    }
+}
+
+/* ==========================================
+   フッター全体
+   ========================================== */
+.l-footer {
+    border-top: 1px solid #ddd;
+    margin-top: 40px;
+}
+
+/* PC用ナビゲーション（4カラムグリッド） */
+.l-footer__nav.u-pc {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* 各カラムのリスト */
+.l-footer__nav__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.l-footer__nav__list li {
+    margin-bottom: 10px;
+}
+
+.l-footer__nav__list a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.l-footer__nav__list a:hover {
+    color: #0066cc;
+    text-decoration: underline;
+}
+
+/* 下層リスト（ネストされたリスト）のスタイル */
+.l-footer__nav__list ul {
+    list-style: none;
+    padding-left: 15px;
+    margin-top: 5px;
+}
+
+.l-footer__nav__list ul li {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 6px;
+}
+
+/* お問い合わせボタンなどのスタイル */
+.l-footer__nav__btn {
+    display: block;
+    background-color: #0066cc;
+    color: #fff;
+    text-align: center;
+    padding: 12px;
+    margin-top: 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.l-footer__nav__btn:hover {
+    background-color: #004080;
+}
+
+/* ==========================================
+   フッター下部（会社情報・SNS・コピーライト）
+   ========================================== */
+.l-footer__btm {
+    text-align: center;
+}
+
+.l-footer__btm address {
+    font-style: normal;
+    margin-bottom: 20px;
+    color: #666;
+    font-size: 13px;
+}
+
+/* SNSアイコンリスト */
+.l-footer__sns {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.l-footer__sns img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    transition: opacity 0.3s;
+}
+
+.l-footer__sns a:hover img {
+    opacity: 0.7;
+}
+
+/* コピーライト周辺の調整 */
+.l-footer small {
+    display: block;
+    text-align: center;
+    color: #888;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.l-footer center {
+    margin-top: 15px;
+}
+.l-footer {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.l-footer a {
+  color: #ffffff;
+}
+.l-footer {
+  background-color: #333333!important;
+}
+ height: 48px;
+  box-sizing: border-box;
+  padding: 0;
+  background: #e75b22;
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  text-decoration: none;
+  border-radius: 0;
+}
+
+}
+body {
+  margin: 0;
+}
+.body {
+  margin: 0;
+}
+
+/* ==========================================
+   Layout層 (l- プレフィックス)
+   ========================================== */
+.l-header {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* 固定レイアウトの修飾 */
+.l-header--fixed {
+  position: fixed;
+  top: 0;
+  height: 5rem;
+}
+.fixedHeader {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  height: 80px;
+  background: #ffffff;
+}
+
+body {
+  padding-top: 80px;
+}
+.l-header__inr {
+  position: relative;
+  height: 100%;
+}
+
+.l-header__info__tel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+}
