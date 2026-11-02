@@ -333,3 +333,63 @@ body {
   right: 0;
   margin: 0;
 }
+.fixedHeader {
+  height: 70px;
+}
+
+body {
+  padding-top: 80px;
+}
+
+.l-header__info__tel a {
+  width: 70px;
+  height: 70px;
+}
+/* なめらかにスクロール */
+html {
+  scroll-behavior: smooth;
+}
+
+.page-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+
+  color: #fff;
+  background-color: #FF0000;
+ border-radius: 5px; /* 角丸の四角 */  text-decoration: none;
+  font-size: 24px;
+
+  /* 最初は非表示 */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+/* スクロールしたら表示 */
+.page-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.page-top:hover {
+  background-color: #f00; /* 赤 */}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .page-top {
+    transition: none;
+  }
+}

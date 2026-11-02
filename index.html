@@ -312,7 +312,7 @@
 
 <header class="l-header fixedHeader">
   <div class="l-header__inr">
-    <a href="/" class="l-header__logo"><img id="logo" src="http://silvercattle2.sakura.ne.jp/images/cat.jpg" width="130" height="58" alt="【ホームページ制作所】スタートhp"></a>
+    <a href="/" class="l-header__logo"><img id="logo" src="http://silvercattle2.sakura.ne.jp/images/alogo.png" width="130" height="70" alt="【ホームページ制作所】スタートhp"></a>
     <p class="l-header__info__tel">
       <a href="tel:09069226968" aria-label="電話をかける"></a>
     </p>
@@ -325,7 +325,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
+<a href="#" class="page-top" aria-label="ページの先頭へ戻る">
+  ↑
+</a>
 
+<script>
+  const pageTop = document.querySelector(".page-top");
+
+  function togglePageTop() {
+    pageTop.classList.toggle("is-visible", window.scrollY > 200);
+  }
+
+  window.addEventListener("scroll", togglePageTop, { passive: true });
+  togglePageTop();
+</script>
    <div class="pagebody"></div>
     <h1>でじるみで勉強中</h1>
     </div>
@@ -368,6 +381,9 @@
 </div>
 
 <div class="pagebody"></div>
+<a href="#" class="page-top" aria-label="ページの先頭へ戻る">
+  ↑
+</a>
 </section>
         </main>
         <!-- /l-content -->
@@ -617,12 +633,6 @@
                     <br>
                     ホームページ制作所スタートhpは、覚えたてのシステムエンジニアです。
                 </address>
-                <ul class="l-footer__bnr">
-                    <li class="footer_left_banar">
-                    </li>
-                    <li>
-                    </li>
-                </ul>
                 <ul class="l-footer__sns">
                     <li><a href="aaaaaaaaa" target="_blank"><img src="https://mercury-realestate.co.jp/cms/wp-content/themes/c21mercury/images/common/ft-insta-ico.png" alt="Instagram"></a></li>
                     <li><a href="aaaaaaaaaaaaaaaaa" target="_blank"><img src="https://mercury-realestate.co.jp/cms/wp-content/themes/c21mercury/images/common/ft-fb-ico.png" alt="Facebook"></a></li>
