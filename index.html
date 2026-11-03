@@ -7,6 +7,9 @@
     <meta name="format-detection" content="telephone=no">
     <title>【ホームページ制作所】スタートhp</title>
     <script type="application/ld+json">
+        <link rel="apple-touch-icon"
+      sizes="180x180"
+      href="./images/start.png">
         {
     		"@context":"//schema.org",
     		"@type":"WebSite",
@@ -16,8 +19,13 @@
       </script>
     <!-- インターネット上のCSSを読み込む -->
 
-    <link rel="stylesheet" href="https://www.starthp.net/shared-css/bundle.css">
-    <!-- This site is optimized with the Yoast SEO plugin v19.13 - https://yoast.com/wordpress/plugins/seo/ -->
+<!-- サーバーのCSS -->
+<link rel="stylesheet"
+      href="https://www.starthp.net/shared-css/bundle.css">
+
+<!-- パソコン内のCSS -->
+<link rel="stylesheet"
+      href="./Shared-CSSのコピー/bundle.css">    <!-- This site is optimized with the Yoast SEO plugin v19.13 - https://yoast.com/wordpress/plugins/seo/ -->
     <!-- This site is optimized with the Yoast SEO plugin v19.13 - https://yoast.com/wordpress/plugins/seo/ -->
     <meta name="description" content="ホームページ制作に関するお悩み・お困りごとは多種多様。 素人が親身になってつくる【ホームページ制作所】スタートhp"/>
     <link rel="canonical" href="http://www.starthp.net/">
@@ -278,9 +286,10 @@
         font-size: var(--wp--preset--font-size--x-large) !important;
     }
     </style>
+
     <!--n2css-->
   <link rel="shortcut icon" href="/favicon.ico">
-<link rel="apple-touch-icon" href="images/dakyounaki.png">
+<link rel="apple-touch-icon" href="images/start.png">
     <link rel="icon" type="image/png" href="/android-chrome-256x256.png">
     <!-- Google Tag Manager -->
     <script>
@@ -301,9 +310,10 @@
     <!-- End Google Tag Manager -->
     <meta http-equiv="Cache-Control" content="no-store">
     <meta http-equiv="Cache-Control" content="no-cache">
-    .l-header .l-header__info__tel {
-  position: absolute;
     <style>
+        .l-header__info__tel a {
+  transform: translateX(-70px);
+}
 .menu-button {
   position: fixed;
   top: 0px;
@@ -322,6 +332,9 @@
 }
 
 .menu-button span {
+    position: relative;
+left: -15px;
+ top: 5px;
   display: block;
   width: 100%;
   height: 2px;
