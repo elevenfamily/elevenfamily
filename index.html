@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-</script>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1" id="viewport">
@@ -302,6 +301,95 @@
     <!-- End Google Tag Manager -->
     <meta http-equiv="Cache-Control" content="no-store">
     <meta http-equiv="Cache-Control" content="no-cache">
+    .l-header .l-header__info__tel {
+  position: absolute;
+    <style>
+.menu-button {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  z-index: 2001;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 48px;
+  height: 48px;
+  padding: 10px;
+  border: none;
+  background: #fff;
+  cursor: pointer;
+}
+
+.menu-button span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #333;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.menu-button.is-open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-button.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-button.is-open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.header-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  box-sizing: border-box;
+  padding: 90px 24px 30px;
+  background: #fff;
+  overflow-y: auto;
+  transform: translateY(-100%);
+  visibility: hidden;
+  transition: transform 0.35s ease, visibility 0.35s;
+}
+
+.header-menu.is-open {
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.header-menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.header-menu a {
+  display: flex;
+  justify-content: space-between;
+  padding: 22px 0;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.header-menu a:hover {
+  color: #c00;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-button span,
+  .header-menu {
+    transition: none;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -340,6 +428,28 @@
   togglePageTop();
 </script>
    <div class="pagebody"></div>
+   <!-- ハンバーガーボタン -->
+<button
+  class="menu-button"
+  type="button"
+  aria-label="メニューを開く"
+  aria-expanded="false"
+  aria-controls="header-menu"
+>
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<!-- 開くメニュー -->
+<nav id="header-menu" class="header-menu" aria-label="メインメニュー" inert>
+  <ul>
+    <li><a href="index.html">ホーム <span>›</span></a></li>
+    <li><a href="service.html">サービス紹介 <span>›</span></a></li>
+    <li><a href="company.html">会社情報 <span>›</span></a></li>
+    <li><a href="contact.html">お問い合わせ <span>›</span></a></li>
+  </ul>
+</nav>
     <h1>でじるみで勉強中</h1>
     </div>
     <img src="images/mein.png" alt="メインビジュアル" width="100%" height="500"></div>
@@ -379,7 +489,47 @@
 <div class="flow-connector" aria-hidden="true">
   <span class="flow-connector__arrow"></span>
 </div>
+<script>
+  const menuButton = document.querySelector(".menu-button");
+  const headerMenu = document.querySelector(".header-menu");
 
+  function setMenu(open) {
+    // 閉じる前に、メニュー内のフォーカスをボタンへ戻す
+    if (!open && headerMenu.contains(document.activeElement)) {
+      menuButton.focus();
+    }
+
+    menuButton.classList.toggle("is-open", open);
+    headerMenu.classList.toggle("is-open", open);
+    document.body.classList.toggle("menu-open", open);
+
+    menuButton.setAttribute("aria-expanded", String(open));
+    menuButton.setAttribute(
+      "aria-label",
+      open ? "メニューを閉じる" : "メニューを開く"
+    );
+
+    // 閉じているメニューを操作できないようにする
+    headerMenu.inert = !open;
+  }
+
+  menuButton.addEventListener("click", () => {
+    const open = menuButton.getAttribute("aria-expanded") === "true";
+    setMenu(!open);
+  });
+
+  // リンクを押したら閉じる
+  headerMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => setMenu(false));
+  });
+
+  // Escキーでも閉じる
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMenu(false);
+    }
+  });
+</script>
 <div class="pagebody"></div>
 <a href="#" class="page-top" aria-label="ページの先頭へ戻る">
   ↑
