@@ -19,13 +19,10 @@
       </script>
     <!-- インターネット上のCSSを読み込む -->
 
-<!-- サーバーのCSS -->
-<link rel="stylesheet"
-      href="https://www.starthp.net/shared-css/bundle.css">
 
 <!-- パソコン内のCSS -->
 <link rel="stylesheet"
-      href="./Shared-CSSのコピー/bundle.css">    <!-- This site is optimized with the Yoast SEO plugin v19.13 - https://yoast.com/wordpress/plugins/seo/ -->
+      href="./Shared-CSS/bundle.css">    <!-- This site is optimized with the Yoast SEO plugin v19.13 - https://yoast.com/wordpress/plugins/seo/ -->
     <!-- This site is optimized with the Yoast SEO plugin v19.13 - https://yoast.com/wordpress/plugins/seo/ -->
     <meta name="description" content="ホームページ制作に関するお悩み・お困りごとは多種多様。 素人が親身になってつくる【ホームページ制作所】スタートhp"/>
     <link rel="canonical" href="http://www.starthp.net/">
@@ -284,6 +281,65 @@
 
     .has-x-large-font-size {
         font-size: var(--wp--preset--font-size--x-large) !important;
+        /* メニューの背景と文字色 */
+.header-menu {
+  background: #064595;
+  color: #fff;
+}
+
+/* スマホでは1列 */
+.mega-menu {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mega-menu-group {
+  min-width: 0;
+}
+
+.mega-menu-group h2 {
+  margin: 0 0 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #ffffff80;
+  color: #fff;
+  font-size: 20px;
+}
+
+.header-menu .mega-menu a {
+  display: block;
+  padding: 12px 0;
+  border-bottom: none;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.header-menu .mega-menu a::before {
+  content: "›";
+  margin-right: 8px;
+}
+
+.header-menu .mega-menu a:hover {
+  text-decoration: underline;
+}
+
+/* 中くらいの画面では2列 */
+@media (min-width: 768px) {
+  .mega-menu {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* 広い画面では4列 */
+@media (min-width: 1100px) {
+  .mega-menu {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
     }
     </style>
 
@@ -323,17 +379,17 @@
   flex-direction: column;
   justify-content: center;
   gap: 6px;
-  width: 48px;
-  height: 48px;
+  width: 70px;
+  height: 70px;
   padding: 10px;
   border: none;
-  background: #fff;
+  background: #FF0000;
   cursor: pointer;
 }
 
 .menu-button span {
     position: relative;
-left: -15px;
+    left: 0;
  top: 5px;
   display: block;
   width: 100%;
@@ -356,19 +412,23 @@ left: -15px;
 
 .header-menu {
   position: fixed;
-  inset: 0;
+  inset: 70px 0 0 0;
   z-index: 2000;
   box-sizing: border-box;
-  padding: 90px 24px 30px;
+  padding: 20px 24px 30px;
   background: #fff;
   overflow-y: auto;
-  transform: translateY(-100%);
+
+  transform: none;
+  clip-path: inset(0 0 100% 0);
   visibility: hidden;
-  transition: transform 0.35s ease, visibility 0.35s;
+  transition: clip-path 0.35s ease, visibility 0.35s;
 }
 
 .header-menu.is-open {
-  transform: translateY(0);
+  clip-path: inset(0);
+  visibility: visible;
+}  transform: translateY(0);
   visibility: visible;
 }
 
@@ -455,15 +515,46 @@ body.menu-open {
 </button>
 
 <!-- 開くメニュー -->
-<nav id="header-menu" class="header-menu" aria-label="メインメニュー" inert>
-  <ul>
-    <li><a href="index.html">ホーム <span>›</span></a></li>
-    <li><a href="service.html">サービス紹介 <span>›</span></a></li>
-    <li><a href="company.html">会社情報 <span>›</span></a></li>
-    <li><a href="contact.html">お問い合わせ <span>›</span></a></li>
-  </ul>
-</nav>
-    <h1>でじるみで勉強中</h1>
+<nav id="header-menu" class="header-menu"
+     aria-label="メインメニュー" inert>
+  <div class="mega-menu">
+
+    <div class="mega-menu-group">
+      <h2>会社情報</h2>
+      <ul>
+        <li><a href="company.html">会社概要</a></li>
+        <li><a href="message.html">代表メッセージ</a></li>
+        <li><a href="access.html">アクセス</a></li>
+      </ul>
+    </div>
+
+    <div class="mega-menu-group">
+      <h2>サービス紹介</h2>
+      <ul>
+        <li><a href="service.html">サービス一覧</a></li>
+        <li><a href="design.html">ホームページ制作</a></li>
+        <li><a href="support.html">運用サポート</a></li>
+      </ul>
+    </div>
+
+    <div class="mega-menu-group">
+      <h2>制作実績</h2>
+      <ul>
+        <li><a href="works.html">制作実績一覧</a></li>
+        <li><a href="price.html">料金案内</a></li>
+      </ul>
+    </div>
+
+    <div class="mega-menu-group">
+      <h2>お問い合わせ</h2>
+      <ul>
+        <li><a href="contact.html">お問い合わせ</a></li>
+        <li><a href="faq.html">よくある質問</a></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>    <h1>でじるみで勉強中</h1>
     </div>
     <img src="images/mein.png" alt="メインビジュアル" width="100%" height="500"></div>
                                     </div>

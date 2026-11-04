@@ -1,5 +1,5 @@
-h1 {
-    color:   #0000ff;
+ {
+      color:   #0000ff;
     font-size: 40px;
 }
 /* 基本：パソコン */
@@ -25,7 +25,7 @@ h1 {
   min-height: 44px;
   padding: 0 18px;
   border-radius: 999px;
-  background: #e75b22;
+  background: #808080;
   color: #fff;
   font-size: 18px;
   font-weight: 700;
@@ -46,7 +46,7 @@ h1 {
   height: 48px;
   box-sizing: border-box;
   padding: 0;
-  background: #e75b22;
+  background: #808080;
   color: #fff;
   font-size: 24px;
   line-height: 1;
@@ -60,7 +60,7 @@ h1 {
 }
 
 .l-header__info__tel a:hover {
-  background: #ff0000;
+  background: #CCCCCC;
 }
 .l-header {
   position: relative;
@@ -79,7 +79,7 @@ h1 {
   justify-content: center;
   width: 56px;
   height: 56px;
-  background: #e75b22;
+  background: #808080;
   color: #fff;
   font-size: 28px;
   line-height: 1;
@@ -88,7 +88,7 @@ h1 {
 }
 
 .l-header__info__tel a:hover {
-  background: #ff0000;
+  background: #CCCCCC;
 }
 .flow-connector {
   position: relative;
