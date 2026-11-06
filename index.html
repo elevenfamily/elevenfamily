@@ -1,5 +1,27 @@
 <!DOCTYPE html>
 <html lang="ja">
+    <style>
+a.header-contact {
+  position: fixed;
+  top: 0;
+  right: 140px;
+  z-index: 2001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 70px;
+  height: 70px;
+  background: #FFBF00 !important;
+  color: #FCFD95;
+  font-size: 30px;
+  text-decoration: none;
+}
+
+a.header-contact:hover {
+  background: #e6a800 !important;
+}
+</style>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="IE=edge">
@@ -395,7 +417,7 @@
   width: 100%;
   height: 2px;
   background: #333;
-  transition: transform 0.3s, opacity 0.3s;
+  transition: transform 0.5s, opacity 0.5s;
 }
 
 .menu-button.is-open span:nth-child(1) {
@@ -422,14 +444,19 @@
   transform: none;
   clip-path: inset(0 0 100% 0);
   visibility: hidden;
-  transition: clip-path 0.35s ease, visibility 0.35s;
+  transition: clip-path 0.5s ease, visibility 0.5s;
 }
 
 .header-menu.is-open {
   clip-path: inset(0);
   visibility: visible;
-}  transform: translateY(0);
-  visibility: visible;
+}
+
+/* 小さい画面ではメニューを開く動きをゆっくりにする */
+@media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .header-menu.is-open {
+    transition: clip-path 0.75s ease, visibility 0s;
+  }
 }
 
 .header-menu ul {
@@ -474,6 +501,11 @@ body.menu-open {
 <header class="l-header fixedHeader">
   <div class="l-header__inr">
     <a href="/" class="l-header__logo"><img id="logo" src="http://silvercattle2.sakura.ne.jp/images/alogo.png" width="130" height="70" alt="【ホームページ制作所】スタートhp"></a>
+    <a href="contact.html"
+   class="header-contact"
+   aria-label="お問い合わせフォームへ">
+  ✉
+</a>
     <p class="l-header__info__tel">
       <a href="tel:09069226968" aria-label="電話をかける"></a>
     </p>
@@ -674,7 +706,7 @@ body.menu-open {
                         </li>
                     </ul>
                     <a href="/contact/reserve/" class="l-footer__nav__btn">無料相談予約</a>
-                    <a href="contactform.php" class="l-footer__nav__btn">お問い合せはこちら</a>
+                    <a href="contact.html" class="l-footer__nav__btn">お問い合せはこちら</a>
                 </div>
                 <div>
                     <ul class="l-footer__nav__list">

@@ -355,7 +355,7 @@ html {
 .page-top {
   position: fixed;
   right: 20px;
-  bottom: 20px;
+  bottom: 60px;
   z-index: 1000;
 
   display: flex;
@@ -398,15 +398,13 @@ html {
 /* 右上のボタン */
 .menu-button {
   position: fixed;
-  top: 0px;
-  right: 0px;
+  top: 15px;
+  right: 20px;
   z-index: 2001;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 6px;
-
   width: 48px;
   height: 48px;
   padding: 10px;
@@ -419,9 +417,9 @@ html {
 .menu-button span {
   display: block;
   width: 100%;
-  height: -10px;
+  height: 2px;
   background: #333;
-  transition: transform 0.3s, opacity 0.3s;
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 /* 開いたら×に変わる */
@@ -437,28 +435,32 @@ html {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* 上から下りてくるメニュー */
+/* 上から下りてくるメニュー：閉じた状態 */
 .header-menu {
   position: fixed;
   inset: 0;
   z-index: 2000;
   box-sizing: border-box;
-
   padding: 90px 24px 30px;
   background: #fff;
   overflow-y: auto;
 
+  clip-path: none;
   transform: translateY(-100%);
   visibility: hidden;
+  pointer-events: none;
+
   transition:
-    transform 0.35s ease,
-    visibility 0.35s;
+    transform 0.5s ease,
+    visibility 0s linear 0.5s;
 }
 
 /* 開いた状態 */
 .header-menu.is-open {
   transform: translateY(0);
   visibility: visible;
+  pointer-events: auto;
+  transition-delay: 0s;
 }
 
 .header-menu ul {
@@ -471,7 +473,6 @@ html {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 22px 0;
   border-bottom: 1px solid #ddd;
   color: #333;
@@ -488,9 +489,208 @@ body.menu-open {
   overflow: hidden;
 }
 
+/* 端末の「動きを減らす」設定に対応 */
 @media (prefers-reduced-motion: reduce) {
   .menu-button span,
   .header-menu {
     transition: none;
   }
+  /* フォーム全体 */
+.cnt-form,
+.cnt-form form {
+  width: 100%;
+  min-width: 0;
+}
+
+.cnt-form table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.cnt-form th,
+.cnt-form td {
+  box-sizing: border-box;
+  padding: 12px;
+  overflow-wrap: anywhere;
+}
+
+.cnt-form th {
+  width: 30%;
+  text-align: left;
+}
+
+/* 入力欄を画面内に収める */
+.cnt-form input[type="text"],
+.cnt-form input[type="email"],
+.cnt-form input[type="tel"],
+.cnt-form textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  font-size: 16px;
+}
+
+.cnt-form textarea {
+  resize: vertical;
+}
+
+/* 選択肢は必要に応じて折り返す */
+.cnt-form .mwform-radio-field {
+  display: inline-block;
+  margin: 0 12px 8px 0;
+}
+
+/* スマートフォンでは上下に配置 */
+@media (max-width: 768px) {
+  .cnt-form table,
+  .cnt-form tbody,
+  .cnt-form tr,
+  .cnt-form th,
+  .cnt-form td {
+    display: block;
+    width: 100%;
+  }
+
+  .cnt-form th {
+    padding: 16px 0 6px;
+  }
+
+  .cnt-form td {
+    padding: 0 0 16px;
+  }
+}
+/* 電話の左にお問い合わせボタン */
+.header-contact {
+  position: fixed;
+  top: 0;
+  right: 140px; /* メニュー70px ＋ 電話70px */
+  z-index: 2001;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 70px;
+  height: 70px;
+
+  background: #FFBF00;
+  color: #FCFD95;
+  font-size: 30px;
+  text-decoration: none;
+}
+
+.header-contact:hover {
+  background: #004c99;
+}
+/* スマートフォンでは、メニューが開く動きを少しゆっくりにする */
+@media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .header-menu.is-open {
+    transition-duration: 0.65s, 0s;
+  }
+}
+/* 画面幅768px以下では「↑」ボタンをゆっくり表示 */
+@media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .page-top.is-visible {
+    transition: opacity 0.8s ease, visibility 0s;
+  }
+}
+/* お問い合わせの流れ */
+.cnt-steps {
+  --step-size: clamp(32px, 6vw, 48px);
+  --step-active: #1b293d;
+  --step-muted: #737b85;
+  --step-line: #d5d8dc;
+
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 1050px;
+  margin: 32px auto 24px;
+  padding: 0;
+  list-style: none;
+  counter-reset: contact-step;
+}
+
+/* 1番目と3番目の丸の中心を線でつなぐ */
+.cnt-steps::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--step-size) / 2);
+  left: calc(100% / 6);
+  right: calc(100% / 6);
+  height: 2px;
+  background: var(--step-line);
+  transform: translateY(-50%);
+}
+
+.cnt-steps > li {
+  position: relative;
+  padding: 0 4px;
+  text-align: center;
+  color: var(--step-muted);
+  font-size: clamp(12px, 3.5vw, 18px);
+  font-weight: 700;
+  counter-increment: contact-step;
+}
+
+.cnt-steps > li::before {
+  content: counter(contact-step);
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: var(--step-size);
+  height: var(--step-size);
+  margin: 0 auto 12px;
+  border: 2px solid var(--step-line);
+  border-radius: 50%;
+  background: #fff;
+  font-size: clamp(16px, 4vw, 24px);
+}
+
+.cnt-steps > li.is-on {
+  color: var(--step-active);
+}
+
+.cnt-steps > li.is-on::before {
+  border-color: var(--step-active);
+  background: var(--step-active);
+  color: #fff;
+}
+.submit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 240px;
+  min-height: 48px;
+  margin: 24px auto 0;
+  padding: 12px 18px;
+
+  border: 0;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0873ce, #034589);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgb(3 69 137 / 24%);
+}
+
+.submit-button::after {
+  content: "→" / "";
+  font-size: 1.2em;
+}
+
+.submit-button:hover {
+  background: linear-gradient(135deg, #0563b6, #02386f);
+}
+
+.submit-button:focus-visible {
+  outline: 3px solid #0873ce;
+  outline-offset: 3px;
 }
